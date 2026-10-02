@@ -1,0 +1,120 @@
+body {
+    background-image: url("bg2.gif");
+}
+.nav {
+    position: sticky;
+    top: 0px;
+    padding: 10px 0px;
+}
+ul {
+    list-style-type: none;
+}
+
+.input {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 25px;
+    border: 1px solid white;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+li {
+    float: left;
+}
+.fort {
+    float: right;
+}
+.fort a {
+    display: flex;
+    padding: 10px 22px;
+    font-size: 29px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+}
+.fort a:hover {
+    color: red;
+}
+h1 {
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 43px;
+}
+p {
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+.switch {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: red;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.switch:hover {
+    color: white;
+}
+.osu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hiddenbtn {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.gamechild {
+    display: block;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 75px;
+}
+.gamechild:hover {
+    animation: fadeToGreen 1s forwards;
+}
+@keyframes fadeToGreen {
+    0% {
+    }
+
+    100% {
+        color: #00FF00; 
+    }
+}
+
+
+@keyframes colorFade {
+    0% {
+        color: #00ffff;
+    }
+    100% {
+        color: #ff00ff;
+    }
+}
+
+.bigbtn a:hover {
+    color: yellow;
+}
+.bigbtn {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    text-decoration: none;
+    font-weight: 700;
+}

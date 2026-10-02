@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Request</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensure dark mode is enabled */
+        body {
+            background-color: #1f2937;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+    <div class="w-full max-w-md p-6 space-y-4 bg-gray-800 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-semibold text-center">
+            Send Game Request
+        </h1>
+
+        <div>
+            <label for="addtext" class="block text-sm font-medium text-gray-300">Request</label>
+            <label for="addtext" class="block text-sm font-small text-gray-200">Check on other game websites using the proxy before sending a request</label>
+
+            <textarea id="optionname" rows="2" class="w-full mt-2 p-2 text-black rounded-lg"
+                placeholder="Email/Name (for response)"></textarea>
+            <textarea id="requestText" rows="4" class="w-full mt-2 p-2 text-black rounded-lg"
+                placeholder="Enter your request here..."></textarea>
+        </div>
+        
+
+        <button onclick="sendRequest()"
+            class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Send Request
+        </button>
+
+        <div id="responseMessage" class="text-center text-sm text-gray-400"></div>
+    </div>
+
+    <script>
+        async function sendRequest() {
+            const requestText = document
+                .getElementById("requestText")
+                .value.trim();
+            if (!requestText) {
+                alert("Please enter a request.");
+                return;
+            }
+            let fromtext = "";
+            if (document.getElementById("optionname").value.length =! 0){
+                fromtext = document.getElementById("optionname").value;
+            }
+            else{
+                fromtext = "Not Specified."
+            }
+
+            const payload = {
+                Request: requestText + " <strong><br> From: " + fromtext + "</strong>",
+            };
+
+            try {
+                document.getElementById("responseMessage").innerText =
+                    "Request sending...";
+                const response = await fetch(
+                    "https://4wrhdk5dcg.execute-api.us-east-2.amazonaws.com/",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(payload),
+                    },
+                );
+
+                const result = await response.text();
+                document.getElementById("responseMessage").innerText =
+                    "Request sent successfully! Estimated time: 1 week.";
+                console.log(result); // Log response in the console
+            } catch (error) {
+                document.getElementById("responseMessage").innerText =
+                    "Error sending request.";
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>

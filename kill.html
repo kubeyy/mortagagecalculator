@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Massive Text</title>
+</head>
+<body>
+    <h1>Copy the Massive Text Below</h1>
+    <textarea id="copyText" rows="40" cols="120"></textarea>
+    <br>
+    <button onclick="copyText()">Copy Text</button>
+
+    <script>
+        // Generate a huge amount of text (millions of characters)
+        function generateLargeText() {
+            const text = 'A'.repeat(10000000); // 10 million characters
+            document.getElementById("copyText").value = text;
+        }
+
+        function copyText() {
+            const textArea = document.getElementById("copyText");
+            textArea.select();
+            textArea.setSelectionRange(0, 99999); // For mobile devices
+
+            document.execCommand("copy");
+            alert("Text copied to clipboard!");
+        }
+
+        // Generate large text on page load
+        window.onload = generateLargeText;
+    </script>
+</body>
+</html>
